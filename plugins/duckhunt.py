@@ -329,7 +329,7 @@ def attack(event, nick, chan, message, db, conn, reply, attack):
             "Better luck next time.",
             "WTF?! Who are you, Kim Jong Un firing missiles? You missed."
         ]
-        no_duck = "There is no duck! What are you shooting at?"
+        no_duck = "There is no duck, {}! What are you shooting at?"
         msg = "{} you shot a duck in {:.3f} seconds! You have killed {} in {}."
         scripter_msg = "You pulled the trigger in {:.3f} seconds, that's mighty fast. Are you sure you aren't a script? Take a 2 hour cool down."
         attack_type = "shoot"
@@ -340,7 +340,7 @@ def attack(event, nick, chan, message, db, conn, reply, attack):
             "The duck said no, maybe bribe it with some pizza? Ducks love pizza don't they?",
             "Who knew ducks could be so picky?"
         ]
-        no_duck = "You tried befriending a non-existent duck. That's freaking creepy."
+        no_duck = "You tried befriending a non-existent duck, {}. That's freaking creepy."
         msg = "{} you befriended a duck in {:.3f} seconds! You have made friends with {} in {}."
         scripter_msg = "You tried friending that duck in {:.3f} seconds, that's mighty fast. Are you sure you aren't a script? Take a 2 hour cool down."
         attack_type = "friend"
@@ -352,7 +352,7 @@ def attack(event, nick, chan, message, db, conn, reply, attack):
             conn.cmd("KICK", chan, nick, no_duck)
             return
 
-        return no_duck
+        return no_duck.format(nick)
     else:
         status['shoot_time'] = time()
         deploy = status['duck_time']
